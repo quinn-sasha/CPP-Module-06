@@ -9,13 +9,31 @@
 #include <limits>
 
 namespace {
-void print_converted_char(double from) {
-  if (from < std::numeric_limits<char>::min() ||  // implicit conversion!
-      from > std::numeric_limits<char>::max()) {
+void print_one_character(const std::string& str) {
+  int int_converted = static_cast<int>(str[0]);
+  if (int_converted < 0 || int_converted > 127) {
     std::cout << "char: impossible\n";
     return;
   }
-  char converted = static_cast<char>(from);
+  char converted = static_cast<char>(int_converted);
+  if (!std::isprint(converted)) {
+    std::cout << "char: Non displayable\n";
+    return;
+  }
+  std::cout << "char: " << converted << "\n";
+}
+
+void print_converted_char(const std::string& str, double d_converted) {
+  if (str.size() == 1) {
+    print_one_character(str);
+    return;
+  }
+  // Convert numerical lieterals like 100 from here
+  if (d_converted < 0 || d_converted > 127) {  // implicit conversion!
+    std::cout << "char: impossible\n";
+    return;
+  }
+  char converted = static_cast<char>(d_converted);
   if (!std::isprint(converted)) {
     std::cout << "char: Non displayable\n";
     return;
@@ -80,7 +98,7 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::convert(const std::string& str) {
   char* endptr;
   double d_converted = strtod(str.c_str(), &endptr);
-  if (*endptr != '\0' && std::string(endptr) != "f") {
+  if (*endptr != '\0' && std::string(endptr) != "f" && str.size() != 1) {
     std::cout << "Every conversion is impossible\n";
     return;
   }
@@ -95,7 +113,7 @@ void ScalarConverter::convert(const std::string& str) {
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";
   } else {
-    print_converted_char(d_converted);
+    print_converted_char(str, d_converted);
     print_converted_int(d_converted);
   }
   print_converted_float(d_converted);
