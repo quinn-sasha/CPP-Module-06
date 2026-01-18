@@ -41,21 +41,17 @@ void identify(Base& ref_base) {
     (void)dynamic_cast<A&>(ref_base);
     std::cout << "A\n";
     return;
-  } catch (const std::bad_cast&) {
-    // Do nothing
-  }
+  } catch (const std::bad_cast&) {}
   try {
     (void)dynamic_cast<B&>(ref_base);
     std::cout << "B\n";
     return;
-  } catch (const std::bad_cast&) {
-  }
+  } catch (const std::bad_cast&) {}
   try {
     (void)dynamic_cast<C&>(ref_base);
     std::cout << "C\n";
     return;
-  } catch (const std::bad_cast&) {
-  }
+  } catch (const std::bad_cast&) {}
   std::cout << "Base\n";
 }
 
