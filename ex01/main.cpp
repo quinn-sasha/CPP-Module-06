@@ -1,5 +1,5 @@
-#include <cassert>
 #include <stdint.h>
+#include <cassert>
 
 #include "Data.hpp"
 #include "Serializer.hpp"
