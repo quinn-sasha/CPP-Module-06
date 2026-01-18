@@ -56,7 +56,7 @@ void print_converted_float(double from) {
     std::cout << "float: nanf\n";
     return;
   }
-  if (from < std::numeric_limits<float>::lowest()) {
+  if (from < -std::numeric_limits<float>::max()) {
     std::cout << "float: -inff\n";
     return;
   }
