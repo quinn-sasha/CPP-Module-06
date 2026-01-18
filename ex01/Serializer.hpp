@@ -1,7 +1,7 @@
 #ifndef EX01_SERIALIZER_HPP_
 #define EX01_SERIALIZER_HPP_
 
-#include <cstdint>
+#include <stdint.h>
 
 #include "Data.hpp"
 
@@ -12,7 +12,7 @@ class Serializer {
   ~Serializer();
 
  public:
-  static std::uintptr_t serialize(Data* ptr);
+  static uintptr_t serialize(Data* ptr);
   static Data* deserialize(uintptr_t raw);
 };
 

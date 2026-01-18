@@ -1,6 +1,6 @@
 #include "Serializer.hpp"
 
-#include <cstdint>
+#include <stdint.h>
 
 #include "Data.hpp"
 
@@ -14,8 +14,8 @@ Serializer& Serializer::operator=(const Serializer&) { return *this; }
 Serializer::~Serializer() {}
 // -----------------------------------
 
-std::uintptr_t Serializer::serialize(Data* ptr) {
-  return reinterpret_cast<std::uintptr_t>(ptr);
+uintptr_t Serializer::serialize(Data* ptr) {
+  return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data* Serializer::deserialize(uintptr_t raw) {
