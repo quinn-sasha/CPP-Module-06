@@ -24,7 +24,7 @@ fclean: clean
 	$(RM) $(TARGET)
 
 valgrind: $(TARGET)
-	valgrind --leak-check=full --show-leak-kinds=reachable --track-origins=yes ./$(TARGET)
+	valgrind --leak-check=full --show-leak-kinds=reachable --track-origins=yes ./$(TARGET) 42
 
 re: fclean all
 
