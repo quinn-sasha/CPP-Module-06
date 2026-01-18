@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <string>
 
 namespace {
 void print_one_character(const std::string& str) {
